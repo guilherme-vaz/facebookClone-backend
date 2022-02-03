@@ -10,6 +10,7 @@ import {
   HasOne
 } from '@ioc:Adonis/Lucid/Orm'
 import { UserKey, File } from 'App/Models'
+import Post from './Post'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -46,6 +47,10 @@ export default class User extends BaseModel {
   // One user has many keys
   @hasMany(() => UserKey)
   public keys: HasMany<typeof UserKey>
+
+  // One user has many posts
+  @hasMany(() => Post)
+  public posts: HasMany<typeof Post>
 
   // Um usuário tem um avatar
   @hasOne(() => File, {
