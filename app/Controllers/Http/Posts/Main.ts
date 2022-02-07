@@ -20,6 +20,9 @@ export default class PostsController {
         query.preload('avatar')
       })
 
+      // Contador de comentários
+      query.withCount('comments')
+
       // Contador de likes
       query.withCount('reactions', (query) => {
         query.where('type', 'like')

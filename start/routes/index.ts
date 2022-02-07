@@ -5,11 +5,15 @@ import './uploads'
 import './posts'
 import './reactions'
 import './comments'
+import './follows'
+import './conversation'
 
 Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('/user-register', async ({ view }) => {
-  return view.render('emails/register')
-})
+Route.on('/test').render('test')
+
+// Route.get('/user-register', async ({ view }) => {
+//   return view.render('emails/register')
+// })
