@@ -2,7 +2,7 @@
 import Ws from 'App/Services/Ws'
 
 Ws.start((socket) => {
-  socket.on('passarinho', () => {
-    console.log('deu certo!')
+  socket.on('create', (room) => {
+    socket.join(room)
   })
 })

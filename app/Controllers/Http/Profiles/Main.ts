@@ -10,12 +10,14 @@ export default class ProfileController {
       .where({ username })
       .preload('avatar')
       .withCount('posts')
+      .withCount('followers')
+      .withCount('following')
       .firstOrFail()
 
     if (user.id !== auth.user!.id) {
       const isFollowing = await Database.query()
         .from('follows')
-        .where('follower_id', auth.user!.id)
+        .where('follow_id', auth.user!.id)
         .first()
 
       user.$extras.isFollowing = isFollowing ? true : false

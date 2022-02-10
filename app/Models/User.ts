@@ -64,11 +64,19 @@ export default class User extends BaseModel {
 
   // Seguidores
   @manyToMany(() => User, {
-    pivotTable: 'follow',
+    pivotTable: 'follows',
     pivotForeignKey: 'following_id',
-    pivotRelatedForeignKey: 'follower_id'
+    pivotRelatedForeignKey: 'follow_id'
   })
   public followers: ManyToMany<typeof User>
+
+  // Seguindo
+  @manyToMany(() => User, {
+    pivotTable: 'follows',
+    pivotForeignKey: 'follow_id',
+    pivotRelatedForeignKey: 'following_id'
+  })
+  public following: ManyToMany<typeof User>
 
   @computed()
   public get postsCount() {
